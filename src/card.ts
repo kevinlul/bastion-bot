@@ -392,13 +392,17 @@ export function createCardEmbed(
 	}
 
 	let description = "";
+	if (card.is_translation_unofficial?.name?.[lang]) {
+		description = t`The provided card name is unofficial.`;
+		description += "\n";
+	}
 	if (lang === "ja") {
 		if (card.name.ja_romaji) {
-			description = `**Rōmaji**: ${card.name.ja_romaji}\n`;
+			description += `**Rōmaji**: ${card.name.ja_romaji}\n`;
 		}
 	} else if (lang === "ko") {
 		if (card.name.ko_rr) {
-			description = `**RR**: ${card.name.ko_rr}\n`;
+			description += `**RR**: ${card.name.ko_rr}\n`;
 		}
 	}
 
